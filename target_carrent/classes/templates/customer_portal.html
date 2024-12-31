@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .dashboard-container {
+            max-width: 800px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .welcome-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container dashboard-container">
+    <div class="welcome-section">
+        <h2>Welcome,<span sec:authentication="name">Username</span></h2>
+        <a href="/users/update" class="btn btn-primary">Update Profile</a>
+        
+        <form th:action="@{/logout}" method="get">
+    		<input type="submit" value="Logout" />
+		</form>
+    </div>
+    
+    <hr>
+    <h3>Car Options</h3>
+    <div class="row">                                                                                                                                                                                                                                                                                                                                                                                                                                 
+        <div class="col-md-6">
+            <h4>View All Cars</h4>
+            <p>You can also sort through</p>
+            <ul>
+			  <li>By location</li>
+			  <li>By Type of car</li>
+			  <li>Make a reservation</li>
+			</ul>
+				
+            <a href="/cars/all" class="btn btn-primary">View</a>
+        </div>
+    </div>
+    <hr>
+    
+ <h3>Your Reservations</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Table for displaying reservations -->
+            <table class="table reservations-table">
+                <thead>
+                    <tr>
+                        <th>Car Make</th>
+                        <th>Car Model</th>
+                        <th>Car Type</th>
+                        <th>Registration Number</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="reservation : ${reservations}">
+                        <td th:text="${reservation.car.carMake}"></td>
+                        <td th:text="${reservation.car.carModel}"></td>
+                        <td th:text="${reservation.car.carType}"></td>
+                        <td th:text="${reservation.car.registrationNumber}"></td>
+                        <td th:text="${#dates.format(reservation.startDate, 'yyyy-MM-dd')}"></td>
+                        <td th:text="${#dates.format(reservation.endDate, 'yyyy-MM-dd')}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

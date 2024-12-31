@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cars by Location</title>
+</head>
+<body>
+    <h2>Cars by Location</h2>
+    
+    <form th:action="@{/cars/byLocation}" method="get">
+        <label for="locationFilter">Filter by Location:</label>
+        <select id="locationFilter" name="location">
+            <option value="">ALL LOCATIONS</option>
+            <option th:each="loc : ${locations}" th:value="${loc}" th:text="${loc.name}" th:selected="${loc == locationFilter}"></option>
+        </select>
+        <button type="submit">Search</button>
+    </form> 
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Type</th>
+                <th>Registration Number</th>
+                <th>Availability</th>
+                <th>Current Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="car : ${filteredCars}">
+                <td th:text="${car.carMake}"></td>
+                <td th:text="${car.carModel}"></td>
+                <td th:text="${car.carYear}"></td>
+                <td th:text="${car.carType}"></td>
+                <td th:text="${car.registrationNumber}"></td>
+                <td th:text="${car.availability}"></td>
+                <td th:text="${car.location}"></td>
+                <td>
+                    <a th:href="@{/cars/{carID}(carID=${car.carID})}">View</a>
+                    <span> | </span>
+                    <a th:href="@{/cars/edit/{carID}(carID=${car.carID})}">Edit</a>
+                    <span> | </span>
+                    <a th:href="@{/cars/delete/{carID}(carID=${car.carID})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+

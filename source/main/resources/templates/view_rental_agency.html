@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rental Agency Details</title>
+</head>
+<body>
+    <h2>Rental Agency Details</h2>
+    <div th:object="${rentalAgency}">
+        <p>Agency ID: <span th:text="*{agencyID}"></span></p>
+        <p>Agency Name: <span th:text="*{agencyName}"></span></p>
+        <p>Location: <span th:text="*{location}"></span></p>
+        <p>Contact Details: <span th:text="*{contactDetails}"></span></p>
+    </div>
+</body>
+</html>

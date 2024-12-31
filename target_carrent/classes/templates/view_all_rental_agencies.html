@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Rental Agencies</title>
+</head>
+<body>
+    <h2>All Rental Agencies</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Agency ID</th>
+                <th>Agency Name</th>
+                <th>Email</th>
+                <th>Contact Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="*{user.userID}"></td>
+                <td th:text="*{user.username}"></td>
+                <td th:text="*{user.email}"></td>
+                <td th:text="*{user.phoneNumber}"></td>
+                <td>
+                    <a th:href="@{/rental-agencies/{userID}(userID=${user.userID})}">View</a>
+                    <span> | </span>
+                    <a th:href="@{/rental-agencies/update/{userID}(userID=${user.userID})}">Edit</a>
+                    <span> | </span>
+                    <a th:href="@{/rental-agencies/delete/{userID}(userID=${user.userID})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+        <a th:href="@{/user}" class="btn btn-primary">Back to Portal</a>
+    </table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Rental Agency</title>
+</head>
+<body>
+    <h2>Edit Rental Agency</h2>
+
+    <form th:action="@{/rental-agencies/update}" th:object="${user}" method="post">
+        <input type="hidden" th:field="*{userID}" />
+
+        <label for="agency-name">Agency Name:</label>
+        <input type="text" id="username" th:field="*{username}" required/><br/>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required/><br/>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="*{password}" required/><br/>
+        
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" th:field="*{phoneNumber}" required/><br/>
+
+        <button type="submit">Update Rental Agency</button>
+    </form>
+    
+    <br/>
+    
+    <a th:href="@{/rental-agencies/allAgencies}">Back to Rental Agencies</a>
+</body>
+</html>

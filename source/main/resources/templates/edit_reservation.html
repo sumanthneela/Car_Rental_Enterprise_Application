@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edit Reservation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .dashboard-container {
+            max-width: 800px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .welcome-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Reservation</h2>
+    
+    <form th:action="@{/reservations/update}" method="post">
+        <input type="hidden" name="userID" th:value="${reservation.user.userID}">		
+		<input type="hidden" id="carID" name="carID" th:value="${reservation.car.carID}" required>
+		<input type="hidden" id="reservationID" name="reservationID" th:value="${reservation.reservationID}" required>
+		
+        
+        <div class="form-group">
+	        <label for="startDate">Start Date(YYYY-MM-DD):</label>
+	        <input type="date" class="form-control" id="startDate" name="startDate" placeholder="yyyy-MM-dd" required>
+    	</div>
+    	
+    	<div class="form-group">
+	        <label for="endDate">End Date (YYYY-MM-DD):</label>
+	        <input type="date" class="form-control" id="endDate" name="endDate" placeholder="yyyy-MM-dd"required>
+    	</div>
+        
+        <input type="submit" value="Update Reservation"/>
+    </form>
+    
+    <br/>
+    
+    <a th:href="@{/reservations/all}">View All Reservations</a>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Add Car</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container form-container">
+    <h2>Add Car</h2>
+	<form th:action="@{/cars/add}" method="post">
+		<div class="form-group">
+	        <label for="car-make">Make:</label>
+	        <input type="text" id="car-make" name="car-make" required />
+		</div>
+		
+		<div class="form-group">
+	        <label for="car-model">Model:</label>
+	        <input type="text" id="car-model" name="car-model" required />
+		</div>
+		
+		<div class="form-group">
+	        <label for="car-year">Year:</label>
+	        <input type="number" id="car-year" name="car-year" required />
+		</div>
+		
+		<div class="form-group">
+	        <label for="car-type">Type:</label>
+	        <select id="car-type" name="car-type" required>
+	            <option value="SEDAN">Sedan</option>
+	            <option value="SUV">SUV</option>
+	            <option value="CONVERTIBLE">Convertible</option>
+	            <option value="CROSSOVER">Crossover</option>
+	            <option value="MINIVAN">Mini Van</option>
+	            <option value="SPORTSCAR">Sport Car</option>
+	        </select>
+        </div>
+
+        <div class="form-group">
+	        <label for="registration-number">Registration Number:</label>
+	        <input type="text" id="registration-number" name="registration-number" required />
+        </div>
+
+		<div class="form-group form-check">
+	        <label for="availability">Availability:</label>
+	        <input type="checkbox" id="availability" name="availability" />
+		</div>
+		
+        <div class="form-group">
+	        <label for="current-location">Current Location</label>
+	        <select id="current-location" name="current-location" required>
+	            <option value="BOSTON">BOSTON</option>
+	            <option value="CONNECTICUT">CONNECTICUT</option>
+	            <option value="MAINE">MAINE</option>
+	            <option value="MASSACHUSETTS">MASSACHUSETTS</option>
+	            <option value="NEW_HAMPSHIRE">NEW_HAMPSHIRE</option>
+	            <option value="RHODE_ISLAND">RHODE_ISLAND</option>
+	            <option value="VERMONT">VERMONT</option>
+	        </select>
+        </div>
+        <button type="submit">Add Car</button>
+    </form>
+</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

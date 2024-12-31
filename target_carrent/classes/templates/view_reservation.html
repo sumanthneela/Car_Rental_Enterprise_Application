@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reservation Details</title>
+</head>
+<body>
+    <h2>Reservation Details</h2>
+    <div th:object="${reservation}">
+        <p>Reservation ID: <span th:text="*{reservationID}"></span></p>
+        <p>User ID: <span th:text="*{user.userID}"></span></p>
+        <p>Car ID: <span th:text="*{car.carID}"></span></p>
+        <p>Start Date: <span th:text="*{startDate}"></span></p>
+        <p>End Date: <span th:text="*{endDate}"></span></p>
+        <p>Status: <span th:text="*{status}"></span></p>
+    </div>
+</body>
+</html>

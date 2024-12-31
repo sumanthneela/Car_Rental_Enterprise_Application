@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>All Cars</title>
+</head>
+<body>
+    <h2>All Cars</h2>
+    
+    <form th:action="@{/cars/byLocation}" method="get">
+    	<label for="locationFilter">Filter by Location:</label>
+    	<select id="locationFilter" name="location">
+        <option value="">All Locations</option>
+        <option th:each="location : ${locations}" th:value="${location}" th:text="${location.name}"></option>
+    </select>
+    	<button type="submit">Search</button>
+	 </form>
+	 
+	 <form th:action="@{/cars/byCarType}" method="get">
+    	<label for="carTypeFilter">Filter by Car Type:</label>
+    	<select id="carTypeFilter" name="carType">
+        <option value="">All Cars</option>
+        <option th:each="carType : ${carTypes}" th:value="${carType}" th:text="${carType.name}"></option>
+    </select>
+    	<button type="submit">Search</button>
+	 </form>
+		<div th:if="${error}">
+        	<p th:text="${error}" style="color:red"></p>
+		</div>
+	     <div th:if="${success}">
+	        <p th:text="${success}" style="color:greenyellow"></p>
+		 </div>
+		<div th:if="${role == 'AGENCY_STAFF' or role == 'ADMIN'}">
+          	<a th:href="@{/cars/add}" class="btn btn-primary">Add New Car</a>
+        </div> 
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Type</th>
+                <th>Registration Number</th>
+                <th>Availability</th>
+                <th>Current Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="car : ${filteredCars}">
+                <td th:text="*{car.carMake}"></td>
+                <td th:text="*{car.carModel}"></td>
+                <td th:text="*{car.carYear}"></td>
+                <td th:text="*{car.carType}"></td>
+                <td th:text="*{car.registrationNumber}"></td>
+                <td th:text="*{car.availability}"></td>
+                <td th:text="*{car.location}"></td>
+                <td>
+					<a th:href="@{/cars/{carID}(carID=${car.carID})}" class="btn btn-primary"
+						th:if="${role == 'CUSTOMER'}">Reserve</a>
+                    <span> | </span>
+                    <a th:href="@{/cars/edit/{carID}(carID=${car.carID})}" class="btn btn-primary" 
+                    	th:if="${role == 'AGENCY_STAFF' or role == 'ADMIN'}">Edit</a>
+                    <span> | </span>
+                    <a th:href="@{/cars/delete/{carID}(carID=${car.carID})}" class="btn btn-primary"
+                    	th:if="${role == 'AGENCY_STAFF' or role == 'ADMIN'}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+    	<a th:href="@{/user}" class="btn btn-primary">Back to Portal</a>
+    </div>
+</body>
+</html>

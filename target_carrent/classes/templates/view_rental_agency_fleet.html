@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rental Agency Fleet</title>
+</head>
+<body>
+    <h2>Rental Agency Fleet</h2>
+    <div th:object="${rentalAgency}">
+        <p>Agency ID: <span th:text="*{agencyID}"></span></p>
+        <p>Agency Name: <span th:text="*{agencyName}"></span></p>
+        <p>Location: <span th:text="*{location}"></span></p>
+        <p>Contact Details: <span th:text="*{contactDetails}"></span></p>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Car ID</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <!-- Add more fields as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="car : ${fleet}">
+                <td th:text="*{car.carID}"></td>
+                <td th:text="*{car.make}"></td>
+                <td th:text="*{car.model}"></td>
+                <td th:text="*{car.year}"></td>
+                <!-- Add more fields as needed -->
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Create User</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Create User</h2>
+    
+    <form th:action="@{/users/create}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required/><br/>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required/><br/>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required/><br/>
+        
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="ADMIN">ADMIN</option>
+            <option value="USER">USER</option>
+        </select><br/>
+        
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required/><br/>
+        
+        <input type="submit" value="Create User"/>
+    </form>
+    
+    <br/>
+    
+    <a th:href="@{/users/all}">View All Users</a>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

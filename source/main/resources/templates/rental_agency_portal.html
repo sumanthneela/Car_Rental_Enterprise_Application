@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .dashboard-container {
+            max-width: 800px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .welcome-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+	
+	
+<div class="container dashboard-container">
+    <div class="welcome-section">
+        <h2>Welcome, Rental Agency</h2>
+        <a href="/rental-agencies/update" class="btn btn-primary">Update Profile</a>
+        
+        <form th:action="@{/logout}" method="get">
+    		<input type="submit" value="Logout" />
+		</form>
+    </div>
+    <hr>
+    <h3>Car Options</h3>
+    <div class="row">
+		<div class="col-md-6">
+            <h4>View All Cars</h4>
+            <p>You can also sort through</p>
+            <ul>
+			  <li>By location</li>
+			  <li>By Type of car</li>
+			  <li>Edit your Cars</li>
+			  <li>Add your Cars</li>
+			  <li>Add your Cars</li>
+			</ul>
+				
+            <a href="/cars/all" class="btn btn-primary">View</a>
+        </div>
+        <div class="col-md-6">
+            <h4>Add Cars</h4>
+            <p>Add Cars to your fleet</p>
+            <a href="/cars/add" class="btn btn-primary">Add</a>
+        </div>
+    </div>
+    <hr>
+    <h3>Reservations</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>View Reservations</h4>
+            <p>View all the reservations made on your cars</p>
+            <a href="/reservations/all" class="btn btn-primary">View</a>
+        </div>
+    </div>
+    <hr>
+    
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

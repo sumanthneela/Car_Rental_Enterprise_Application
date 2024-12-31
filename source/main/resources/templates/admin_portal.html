@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .dashboard-container {
+            max-width: 800px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .welcome-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container dashboard-container">
+		<div class="welcome-section">
+			<h3>Rental Agencies</h3>
+	        <h2>Welcome to Admin, Name</h2>
+	        <a href="/users/update" class="btn btn-primary">Update Profile</a>
+	        
+	        <form th:action="@{/logout}" method="get">
+	    		<input type="submit" value="Logout" />
+			</form>
+    </div>
+    <hr>
+    <h3>Car Options</h3>
+    <div class="row">                                                                                                                                                                                                                                                                                                                                                                                                                                 
+        <div class="col-md-6">
+            <h4>View All Cars</h4>
+            <p>You can also sort through</p>
+            <ul>
+			  <li>By location</li>
+			  <li>By Type of car</li>
+			  <li>Edit Cars</li>
+			  <li>Add Cars</li>
+			  <li>Add Cars</li>
+			</ul>
+				
+            <a href="/cars/all" class="btn btn-primary">View</a>
+        </div>
+    </div>
+    <hr>
+    <h3>Reservations</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>View Reservations</h4>
+            <p>View all the reservations</p>
+            <a href="/reservations/all" class="btn btn-primary">View</a>
+        </div>
+    </div>
+    <hr>
+    <h3>Manage Rental Agency</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Agencies</h4>
+            <p>View All Agencies</p>
+            <a href="/rental-agencies/allAgencies" class="btn btn-primary">View</a>
+            <h4>Users</h4>
+            <p>View All Users</p>
+            <a href="/rental-agencies/allUsers" class="btn btn-primary">View</a>
+        </div>
+        <div class="col-md-6">
+            <h4>Add a New Agency</h4>
+            <p>Add new agencies</p>
+            <ul>
+			  <li>Add agency</li>
+			  <li>Update agency</li>
+			  <li>Delete agency</li>
+			</ul>
+            <a href="/rental-agencies/addagencyportal" class="btn btn-primary">Add</a>
+        </div>
+    </div>
+    <hr>
+
+    
+	
+	
+	</div>	
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
